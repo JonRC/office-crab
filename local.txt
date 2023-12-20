@@ -1,0 +1,5 @@
+single_thread:221.315980659
+one_thread_per_password:44.60330392
+one_thread_per_batch:44.055516465
+async_with_rayon:44.280863508
+async_with_rayon:43.633493602
