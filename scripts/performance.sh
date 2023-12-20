@@ -1,5 +1,6 @@
 #!/bin/bash
--e # Exit on error
+set -e # Exit on error
+source "$HOME/.cargo/env"
 
 FILE_NAME=${1:-local.txt}
 

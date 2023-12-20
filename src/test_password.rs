@@ -1,7 +1,9 @@
 use std::process::Command;
 
 pub fn test_password(password: &str) -> Result<bool, String> {
-    let test_command = Command::new("msoffice/bin/msoffice-crypt")
+    let binary_path = "runtime-bin/msoffice-crypt";
+
+    let test_command = Command::new(binary_path)
         .arg("-d")
         .arg("-p")
         .arg(password)

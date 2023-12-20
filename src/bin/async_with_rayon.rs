@@ -6,7 +6,8 @@ use std::{
 };
 
 use office_password::{
-    char_sets::generate_alpha_numeric_with_special, nth_password, test_password::test_password,
+    char_sets::generate_alpha_numeric_with_special, nth_password,
+    setup_dependencies::setup_dependencies, test_password::test_password,
 };
 use rayon::prelude::*;
 
@@ -19,9 +20,9 @@ fn main() {
         .unwrap_or(0);
     let range_end = args
         .get(2)
-        .unwrap_or(&String::from("10000"))
+        .unwrap_or(&String::from("1000"))
         .parse::<usize>()
-        .unwrap_or(10000);
+        .unwrap_or(1000);
 
     let start = Instant::now();
     async_with_rayon(range_start..range_end);
@@ -30,6 +31,8 @@ fn main() {
 }
 
 pub fn async_with_rayon(range: Range<usize>) -> Option<String> {
+    setup_dependencies();
+
     let char_set = generate_alpha_numeric_with_special();
     let char_set_arc = Arc::new(char_set);
     let valid_password: Option<String> = None;

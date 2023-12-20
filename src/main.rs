@@ -1,5 +1,6 @@
 mod char_sets;
 mod nth_password;
+mod setup_dependencies;
 mod test_password;
 mod test_password_async;
 

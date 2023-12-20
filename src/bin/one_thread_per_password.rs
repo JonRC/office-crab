@@ -7,7 +7,7 @@ use std::{
 
 use office_password::{
     char_sets::generate_alpha_numeric_with_special, nth_password::nth_password,
-    test_password::test_password,
+    setup_dependencies::setup_dependencies, test_password::test_password,
 };
 
 fn main() {
@@ -21,7 +21,7 @@ fn main() {
         .get(2)
         .unwrap_or(&String::from("10000"))
         .parse::<usize>()
-        .unwrap_or(10000);
+        .unwrap_or(1000);
 
     let time = std::time::Instant::now();
     one_thread_per_password(range_start..range_end);
@@ -31,6 +31,8 @@ fn main() {
 }
 
 fn one_thread_per_password(password_range: Range<usize>) -> Option<String> {
+    setup_dependencies();
+
     let batch_size = 30;
     let char_set = generate_alpha_numeric_with_special();
     let char_set_arc = Arc::new(char_set);

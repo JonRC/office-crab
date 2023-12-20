@@ -2,7 +2,7 @@ use std::{env, ops::Range, sync::Arc, time::Instant};
 
 use office_password::{
     char_sets::generate_alpha_numeric_with_special, nth_password::nth_password,
-    test_password_async::test_password_async,
+    setup_dependencies::setup_dependencies, test_password_async::test_password_async,
 };
 use tokio::{sync::Mutex, task::JoinSet};
 
@@ -18,7 +18,7 @@ async fn main() {
         .get(2)
         .unwrap_or(&String::from("10000"))
         .parse::<usize>()
-        .unwrap_or(10000);
+        .unwrap_or(1000);
 
     let start = Instant::now();
     async_with_tokio(range_start..range_end).await;
@@ -27,6 +27,8 @@ async fn main() {
 }
 
 async fn async_with_tokio(range: Range<usize>) {
+    setup_dependencies();
+
     let char_set = generate_alpha_numeric_with_special();
     let char_set_arc = Arc::new(char_set);
     let password: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
