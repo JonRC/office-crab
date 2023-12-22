@@ -27,4 +27,4 @@ t4g.nano    - 0.0021 USD / hour | 0.0504 USD / day
 t4g.xlarge  - 0.0336 USD / hour | 0.8064 USD / day  
 t4g.2xlarge - 0.0336 USD / hour | 0.8064 USD / day  
 c6g.4xlarge - 0.0340 USD / hour | 0.8160 USD / day  
-c6g.8xlarge - 0.0340 USD / hour | 0.8160 USD / day  
+c6g.8xlarge - 0.0340 USD / hour | 0.8160 USD / day

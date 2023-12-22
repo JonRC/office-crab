@@ -1,7 +1,9 @@
 use tokio::process::Command;
 
 pub async fn test_password_async(password: &str) -> Result<bool, String> {
-    let test_command = Command::new("msoffice/bin/msoffice-crypt")
+    let binary_path = "runtime-bin/msoffice-crypt";
+
+    let test_command = Command::new(binary_path)
         .arg("-d")
         .arg("-p")
         .arg(password)
