@@ -20,12 +20,12 @@ fi
 
 if [ "$ARCH" == "x86" ]
 then
-  INSTANCE_IMAGE="ami-0c7217cdde317cfec"
+  INSTANCE_IMAGE="ami-0c7217cdde317cfec" #Ubuntu 20.04
 fi
 
 if [ "$ARCH" == "arm" ]
 then
-  INSTANCE_IMAGE="ami-05d47d29a4c2d19e1"
+  INSTANCE_IMAGE="ami-02cd6549baea35b55"
 fi
 
 aws ec2 run-instances \
@@ -34,4 +34,5 @@ aws ec2 run-instances \
   --key-name office-password \
   --iam-instance-profile Arn="arn:aws:iam::810375230537:instance-profile/ec2-office-password-role" \
   --user-data file://$SCRIPT_DIR/ec2-performance.sh \
-  --no-cli-pager
+  --no-cli-pager \
+  > /dev/null
